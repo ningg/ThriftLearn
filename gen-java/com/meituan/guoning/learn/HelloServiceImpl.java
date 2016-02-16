@@ -31,4 +31,9 @@ public class HelloServiceImpl implements Hello.Iface {
     public String helloNull() throws TException {
         return null;
     }
+
+    @Override
+    public person helloPerson() throws TException {
+        return null;
+    }
 }
