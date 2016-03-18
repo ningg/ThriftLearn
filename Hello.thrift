@@ -1,10 +1,8 @@
 namespace java com.meituan.guoning.learn
 
 struct Person {
-1: string name,
-2: i32 age,
-   bool married,
-   i32  height
+1: i32 age,
+2: string name
 }
 
 service Hello{

@@ -38,10 +38,8 @@ import org.slf4j.LoggerFactory;
 public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, java.io.Serializable, Cloneable, Comparable<Person> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("Person");
 
-  private static final org.apache.thrift.protocol.TField NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("name", org.apache.thrift.protocol.TType.STRING, (short)1);
-  private static final org.apache.thrift.protocol.TField AGE_FIELD_DESC = new org.apache.thrift.protocol.TField("age", org.apache.thrift.protocol.TType.I32, (short)2);
-  private static final org.apache.thrift.protocol.TField MARRIED_FIELD_DESC = new org.apache.thrift.protocol.TField("married", org.apache.thrift.protocol.TType.BOOL, (short)-1);
-  private static final org.apache.thrift.protocol.TField HEIGHT_FIELD_DESC = new org.apache.thrift.protocol.TField("height", org.apache.thrift.protocol.TType.I32, (short)-2);
+  private static final org.apache.thrift.protocol.TField AGE_FIELD_DESC = new org.apache.thrift.protocol.TField("age", org.apache.thrift.protocol.TType.I32, (short)1);
+  private static final org.apache.thrift.protocol.TField NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("name", org.apache.thrift.protocol.TType.STRING, (short)2);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -49,17 +47,13 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
     schemes.put(TupleScheme.class, new PersonTupleSchemeFactory());
   }
 
-  public String name; // required
   public int age; // required
-  public boolean married; // required
-  public int height; // required
+  public String name; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    NAME((short)1, "name"),
-    AGE((short)2, "age"),
-    MARRIED((short)-1, "married"),
-    HEIGHT((short)-2, "height");
+    AGE((short)1, "age"),
+    NAME((short)2, "name");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -74,14 +68,10 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // NAME
-          return NAME;
-        case 2: // AGE
+        case 1: // AGE
           return AGE;
-        case -1: // MARRIED
-          return MARRIED;
-        case -2: // HEIGHT
-          return HEIGHT;
+        case 2: // NAME
+          return NAME;
         default:
           return null;
       }
@@ -123,20 +113,14 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
 
   // isset id assignments
   private static final int __AGE_ISSET_ID = 0;
-  private static final int __MARRIED_ISSET_ID = 1;
-  private static final int __HEIGHT_ISSET_ID = 2;
   private byte __isset_bitfield = 0;
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.NAME, new org.apache.thrift.meta_data.FieldMetaData("name", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.AGE, new org.apache.thrift.meta_data.FieldMetaData("age", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
-    tmpMap.put(_Fields.MARRIED, new org.apache.thrift.meta_data.FieldMetaData("married", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.BOOL)));
-    tmpMap.put(_Fields.HEIGHT, new org.apache.thrift.meta_data.FieldMetaData("height", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+    tmpMap.put(_Fields.NAME, new org.apache.thrift.meta_data.FieldMetaData("name", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Person.class, metaDataMap);
   }
@@ -145,19 +129,13 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
   }
 
   public Person(
-    String name,
     int age,
-    boolean married,
-    int height)
+    String name)
   {
     this();
-    this.name = name;
     this.age = age;
     setAgeIsSet(true);
-    this.married = married;
-    setMarriedIsSet(true);
-    this.height = height;
-    setHeightIsSet(true);
+    this.name = name;
   }
 
   /**
@@ -165,12 +143,10 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
    */
   public Person(Person other) {
     __isset_bitfield = other.__isset_bitfield;
+    this.age = other.age;
     if (other.isSetName()) {
       this.name = other.name;
     }
-    this.age = other.age;
-    this.married = other.married;
-    this.height = other.height;
   }
 
   public Person deepCopy() {
@@ -179,13 +155,32 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
 
   @Override
   public void clear() {
-    this.name = null;
     setAgeIsSet(false);
     this.age = 0;
-    setMarriedIsSet(false);
-    this.married = false;
-    setHeightIsSet(false);
-    this.height = 0;
+    this.name = null;
+  }
+
+  public int getAge() {
+    return this.age;
+  }
+
+  public Person setAge(int age) {
+    this.age = age;
+    setAgeIsSet(true);
+    return this;
+  }
+
+  public void unsetAge() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __AGE_ISSET_ID);
+  }
+
+  /** Returns true if field age is set (has been assigned a value) and false otherwise */
+  public boolean isSetAge() {
+    return EncodingUtils.testBit(__isset_bitfield, __AGE_ISSET_ID);
+  }
+
+  public void setAgeIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __AGE_ISSET_ID, value);
   }
 
   public String getName() {
@@ -212,85 +207,8 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
     }
   }
 
-  public int getAge() {
-    return this.age;
-  }
-
-  public Person setAge(int age) {
-    this.age = age;
-    setAgeIsSet(true);
-    return this;
-  }
-
-  public void unsetAge() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __AGE_ISSET_ID);
-  }
-
-  /** Returns true if field age is set (has been assigned a value) and false otherwise */
-  public boolean isSetAge() {
-    return EncodingUtils.testBit(__isset_bitfield, __AGE_ISSET_ID);
-  }
-
-  public void setAgeIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __AGE_ISSET_ID, value);
-  }
-
-  public boolean isMarried() {
-    return this.married;
-  }
-
-  public Person setMarried(boolean married) {
-    this.married = married;
-    setMarriedIsSet(true);
-    return this;
-  }
-
-  public void unsetMarried() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __MARRIED_ISSET_ID);
-  }
-
-  /** Returns true if field married is set (has been assigned a value) and false otherwise */
-  public boolean isSetMarried() {
-    return EncodingUtils.testBit(__isset_bitfield, __MARRIED_ISSET_ID);
-  }
-
-  public void setMarriedIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __MARRIED_ISSET_ID, value);
-  }
-
-  public int getHeight() {
-    return this.height;
-  }
-
-  public Person setHeight(int height) {
-    this.height = height;
-    setHeightIsSet(true);
-    return this;
-  }
-
-  public void unsetHeight() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __HEIGHT_ISSET_ID);
-  }
-
-  /** Returns true if field height is set (has been assigned a value) and false otherwise */
-  public boolean isSetHeight() {
-    return EncodingUtils.testBit(__isset_bitfield, __HEIGHT_ISSET_ID);
-  }
-
-  public void setHeightIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __HEIGHT_ISSET_ID, value);
-  }
-
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case NAME:
-      if (value == null) {
-        unsetName();
-      } else {
-        setName((String)value);
-      }
-      break;
-
     case AGE:
       if (value == null) {
         unsetAge();
@@ -299,19 +217,11 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
       }
       break;
 
-    case MARRIED:
+    case NAME:
       if (value == null) {
-        unsetMarried();
+        unsetName();
       } else {
-        setMarried((Boolean)value);
-      }
-      break;
-
-    case HEIGHT:
-      if (value == null) {
-        unsetHeight();
-      } else {
-        setHeight((Integer)value);
+        setName((String)value);
       }
       break;
 
@@ -320,17 +230,11 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case NAME:
-      return getName();
-
     case AGE:
       return getAge();
 
-    case MARRIED:
-      return isMarried();
-
-    case HEIGHT:
-      return getHeight();
+    case NAME:
+      return getName();
 
     }
     throw new IllegalStateException();
@@ -343,14 +247,10 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
     }
 
     switch (field) {
-    case NAME:
-      return isSetName();
     case AGE:
       return isSetAge();
-    case MARRIED:
-      return isSetMarried();
-    case HEIGHT:
-      return isSetHeight();
+    case NAME:
+      return isSetName();
     }
     throw new IllegalStateException();
   }
@@ -368,15 +268,6 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
     if (that == null)
       return false;
 
-    boolean this_present_name = true && this.isSetName();
-    boolean that_present_name = true && that.isSetName();
-    if (this_present_name || that_present_name) {
-      if (!(this_present_name && that_present_name))
-        return false;
-      if (!this.name.equals(that.name))
-        return false;
-    }
-
     boolean this_present_age = true;
     boolean that_present_age = true;
     if (this_present_age || that_present_age) {
@@ -386,21 +277,12 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
         return false;
     }
 
-    boolean this_present_married = true;
-    boolean that_present_married = true;
-    if (this_present_married || that_present_married) {
-      if (!(this_present_married && that_present_married))
+    boolean this_present_name = true && this.isSetName();
+    boolean that_present_name = true && that.isSetName();
+    if (this_present_name || that_present_name) {
+      if (!(this_present_name && that_present_name))
         return false;
-      if (this.married != that.married)
-        return false;
-    }
-
-    boolean this_present_height = true;
-    boolean that_present_height = true;
-    if (this_present_height || that_present_height) {
-      if (!(this_present_height && that_present_height))
-        return false;
-      if (this.height != that.height)
+      if (!this.name.equals(that.name))
         return false;
     }
 
@@ -411,25 +293,15 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
   public int hashCode() {
     List<Object> list = new ArrayList<Object>();
 
-    boolean present_name = true && (isSetName());
-    list.add(present_name);
-    if (present_name)
-      list.add(name);
-
     boolean present_age = true;
     list.add(present_age);
     if (present_age)
       list.add(age);
 
-    boolean present_married = true;
-    list.add(present_married);
-    if (present_married)
-      list.add(married);
-
-    boolean present_height = true;
-    list.add(present_height);
-    if (present_height)
-      list.add(height);
+    boolean present_name = true && (isSetName());
+    list.add(present_name);
+    if (present_name)
+      list.add(name);
 
     return list.hashCode();
   }
@@ -442,16 +314,6 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetName()).compareTo(other.isSetName());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetName()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.name, other.name);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
     lastComparison = Boolean.valueOf(isSetAge()).compareTo(other.isSetAge());
     if (lastComparison != 0) {
       return lastComparison;
@@ -462,22 +324,12 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetMarried()).compareTo(other.isSetMarried());
+    lastComparison = Boolean.valueOf(isSetName()).compareTo(other.isSetName());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetMarried()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.married, other.married);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetHeight()).compareTo(other.isSetHeight());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetHeight()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.height, other.height);
+    if (isSetName()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.name, other.name);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -502,24 +354,16 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
     StringBuilder sb = new StringBuilder("Person(");
     boolean first = true;
 
+    sb.append("age:");
+    sb.append(this.age);
+    first = false;
+    if (!first) sb.append(", ");
     sb.append("name:");
     if (this.name == null) {
       sb.append("null");
     } else {
       sb.append(this.name);
     }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("age:");
-    sb.append(this.age);
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("married:");
-    sb.append(this.married);
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("height:");
-    sb.append(this.height);
     first = false;
     sb.append(")");
     return sb.toString();
@@ -566,15 +410,7 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
           break;
         }
         switch (schemeField.id) {
-          case 1: // NAME
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.name = iprot.readString();
-              struct.setNameIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 2: // AGE
+          case 1: // AGE
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
               struct.age = iprot.readI32();
               struct.setAgeIsSet(true);
@@ -582,18 +418,10 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case -1: // MARRIED
-            if (schemeField.type == org.apache.thrift.protocol.TType.BOOL) {
-              struct.married = iprot.readBool();
-              struct.setMarriedIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case -2: // HEIGHT
-            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.height = iprot.readI32();
-              struct.setHeightIsSet(true);
+          case 2: // NAME
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.name = iprot.readString();
+              struct.setNameIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -613,20 +441,14 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      oprot.writeFieldBegin(HEIGHT_FIELD_DESC);
-      oprot.writeI32(struct.height);
-      oprot.writeFieldEnd();
-      oprot.writeFieldBegin(MARRIED_FIELD_DESC);
-      oprot.writeBool(struct.married);
+      oprot.writeFieldBegin(AGE_FIELD_DESC);
+      oprot.writeI32(struct.age);
       oprot.writeFieldEnd();
       if (struct.name != null) {
         oprot.writeFieldBegin(NAME_FIELD_DESC);
         oprot.writeString(struct.name);
         oprot.writeFieldEnd();
       }
-      oprot.writeFieldBegin(AGE_FIELD_DESC);
-      oprot.writeI32(struct.age);
-      oprot.writeFieldEnd();
       oprot.writeFieldStop();
       oprot.writeStructEnd();
     }
@@ -645,52 +467,32 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
     public void write(org.apache.thrift.protocol.TProtocol prot, Person struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       BitSet optionals = new BitSet();
-      if (struct.isSetName()) {
+      if (struct.isSetAge()) {
         optionals.set(0);
       }
-      if (struct.isSetAge()) {
+      if (struct.isSetName()) {
         optionals.set(1);
       }
-      if (struct.isSetMarried()) {
-        optionals.set(2);
-      }
-      if (struct.isSetHeight()) {
-        optionals.set(3);
-      }
-      oprot.writeBitSet(optionals, 4);
-      if (struct.isSetName()) {
-        oprot.writeString(struct.name);
-      }
+      oprot.writeBitSet(optionals, 2);
       if (struct.isSetAge()) {
         oprot.writeI32(struct.age);
       }
-      if (struct.isSetMarried()) {
-        oprot.writeBool(struct.married);
-      }
-      if (struct.isSetHeight()) {
-        oprot.writeI32(struct.height);
+      if (struct.isSetName()) {
+        oprot.writeString(struct.name);
       }
     }
 
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, Person struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      BitSet incoming = iprot.readBitSet(4);
+      BitSet incoming = iprot.readBitSet(2);
       if (incoming.get(0)) {
-        struct.name = iprot.readString();
-        struct.setNameIsSet(true);
-      }
-      if (incoming.get(1)) {
         struct.age = iprot.readI32();
         struct.setAgeIsSet(true);
       }
-      if (incoming.get(2)) {
-        struct.married = iprot.readBool();
-        struct.setMarriedIsSet(true);
-      }
-      if (incoming.get(3)) {
-        struct.height = iprot.readI32();
-        struct.setHeightIsSet(true);
+      if (incoming.get(1)) {
+        struct.name = iprot.readString();
+        struct.setNameIsSet(true);
       }
     }
   }
